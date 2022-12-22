@@ -13,6 +13,30 @@ function App() {
     animationData: MainIcon,
   };
 
+  const menuProps = [
+    {
+      key:1,
+      value: 1,
+      title: "All",
+      groupName: "menu",
+      onChangedMenu: onChangedMenu,
+    },
+    {
+      key:2,
+      value: 2,
+      title: "Active",
+      groupName: "menu",
+      onChangedMenu: onChangedMenu,
+    },
+    {
+      key:3,
+      value: 3,
+      title: "Complete",
+      groupName: "menu",
+      onChangedMenu: onChangedMenu,
+    },
+  ];
+
   return (
     <div className="App">
       <div className="flex items-center justify-center w-screen h-screen bg-gradient-to-br from-slate-600 to-slate-800">
@@ -22,24 +46,9 @@ function App() {
               <Lottie options={defaultOptions} height={30} width={30} />
             </div>
             <div className="flex flex-row gap-2 text-[#CC732D] text-opacity-75 ">
-              <MenuSelect
-                value={1}
-                title={"All"}
-                groupName={"menu"}
-                onChangedMenu={onChangedMenu}
-              />
-              <MenuSelect
-                value={2}
-                title={"Active"}
-                groupName={"menu"}
-                onChangedMenu={onChangedMenu}
-              />
-              <MenuSelect
-                value={3}
-                title={"Complete"}
-                groupName={"menu"}
-                onChangedMenu={onChangedMenu}
-              />
+            {menuProps.map(item=>{
+              return <MenuSelect {...item}  />
+            })}
             </div>
           </div>
           <div className="flex-1 bg-[#24253F]"></div>
