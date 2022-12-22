@@ -1,4 +1,8 @@
 import Lottie from "react-lottie";
+import Body from "./components/Body";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import LayoutContainer from "./components/LayoutContainer";
 import MenuSelect from "./components/MenuSelect";
 import MainIcon from "./lotties/data.json";
 
@@ -15,21 +19,21 @@ function App() {
 
   const menuProps = [
     {
-      key:1,
+      key: 1,
       value: 1,
       title: "All",
       groupName: "menu",
       onChangedMenu: onChangedMenu,
     },
     {
-      key:2,
+      key: 2,
       value: 2,
       title: "Active",
       groupName: "menu",
       onChangedMenu: onChangedMenu,
     },
     {
-      key:3,
+      key: 3,
       value: 3,
       title: "Complete",
       groupName: "menu",
@@ -39,22 +43,20 @@ function App() {
 
   return (
     <div className="App">
-      <div className="flex items-center justify-center w-screen h-screen bg-gradient-to-br from-slate-600 to-slate-800">
-        <div className="bg-[#24253F] w-[20rem] h-[20rem] rounded-2xl flex flex-col">
-          <div className="flex-[0.4] bg-[#2f253F] rounded-t-2xl flex flex-row justify-between  items-center px-4">
-            <div>
-              <Lottie options={defaultOptions} height={30} width={30} />
-            </div>
-            <div className="flex flex-row gap-2 text-[#CC732D] text-opacity-75 ">
-            {menuProps.map(item=>{
-              return <MenuSelect {...item}  />
-            })}
-            </div>
+      <LayoutContainer>
+        <Header>
+          <div>
+            <Lottie options={defaultOptions} height={30} width={30} />
           </div>
-          <div className="flex-1 bg-[#24253F]"></div>
-          <div className="flex-[0.3] bg-[#2f253F]  rounded-b-2xl"></div>
-        </div>
-      </div>
+          <div className="flex flex-row gap-2 text-[#CC732D] text-opacity-75 ">
+            {menuProps.map((item) => {
+              return <MenuSelect {...item} />;
+            })}
+          </div>
+        </Header>
+        <Body></Body>
+        <Footer></Footer>
+      </LayoutContainer>
     </div>
   );
 }
